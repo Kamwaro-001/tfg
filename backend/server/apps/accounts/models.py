@@ -7,11 +7,29 @@ from django.contrib.auth.models import (
 
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, username, password=None, **extra_fields):
+    def create_user(
+        self,
+        email,
+        username,
+        first_name,
+        last_name,
+        phone_number,
+        town,
+        county,
+        password=None,
+    ):
         if not email:
             raise ValueError("User must have an email")
-        email = self.normalize_email(email)
-        user = self.model(email=email, username=username, **extra_fields)
+        # email = self.normalize_email(email)
+        user = self.model(
+            email=self.normalize_email(email),
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            phone_number=phone_number,
+            town=town,
+            county=county,
+        )
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -30,7 +48,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
-    phone_number = models.CharField(max_length=255, blank=True, unique=True)
+    # TODO make phone no unique
+    phone_number = models.CharField(max_length=255, blank=True)
     town = models.CharField(max_length=255, blank=True)
     county = models.CharField(max_length=255, blank=True)
 
@@ -41,15 +60,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-    # REQUIRED_FIELDS = ["username", "first_name", "last_name"]
-    REQUIRED_FIELDS = ["username"]
+    REQUIRED_FIELDS = ["username", "first_name", "last_name", "phone_number", "town", "county"]
 
     def get_full_name(self):
         return f"{self.first_name} - {self.last_name}"
 
     def get_short_name(self):
         return self.username
-      
+
     def get_address(self):
         return f"{self.town}, {self.county}"
 
