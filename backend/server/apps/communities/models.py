@@ -1,9 +1,6 @@
 import string, secrets
 
 from django.db import models
-from django.contrib.auth import get_user_model
-
-Person = get_user_model()
 
 def verification_code():
     return "".join(
@@ -15,7 +12,6 @@ class Community(models.Model):
     name = models.CharField("Community name", max_length=255)
     region = models.CharField("Region", max_length=255)
     created_by = models.CharField("Created by", max_length=255)
-    # verif_code = models.CharField("Verification code", max_length=9, unique=True, default=verification_code())
     verif_code = models.CharField("Verification code", max_length=9, unique=True)
 
     visibility_choices = (("private", "private"), ("public", "public"))
@@ -26,10 +22,12 @@ class Community(models.Model):
     description = models.TextField("Community description")
     date_created = models.DateField("Created on", auto_now_add=True)
 
-    # def save(self, *args, **kwargs):
-    #     CommunityMembers.objects.create(
-    #         community=getattr(self, "name"), username=getattr(self, "created_by")
-    #     )
+    def save(self, *args, **kwargs):
+        setattr(self, 'verif_code', verification_code())
+        CommunityMembers.objects.create(
+            community=getattr(self, "name"), username=getattr(self, "created_by")
+        )
+        super(Community, self).save(*args, **kwargs)
 
 
 class CommunityMembers(models.Model):
