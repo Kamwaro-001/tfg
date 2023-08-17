@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #
     "apps.accounts",
     "apps.communities",
+    "apps.extras",
 ]
 
 MIDDLEWARE = [
@@ -117,10 +118,6 @@ SIMPLE_JWT = {
 
 JWT_AUTH_COOKIE = "auth-cookie"
 
-# AUTHENTICATION_BACKENDS = [
-#     "allauth.account.auth_backends.AuthenticationBackend",
-#     "django.contrib.auth.backends.ModelBackend",
-# ]
 
 # DJOSER CONFIG
 DJOSER = {
@@ -153,14 +150,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_NAME = "treesforgrowth"
 
 SITE_ID = 1
-
-# REST_AUTH_SERIALIZERS = {
-#     "USER_DETAILS_SERIALIZER": "apps.accounts.serializers.UserSerializer",
-# }
-
-# REST_AUTH_REGISTER_SERIALIZERS = {
-#     "REGISTER_SERIALIZER": "apps.accounts.serializers.UserRegisterSerializer",
-# }
 
 # CORS HEADERS
 CORS_ORIGIN_ALLOW_ALL = True
