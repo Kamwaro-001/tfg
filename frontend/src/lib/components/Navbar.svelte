@@ -31,14 +31,15 @@
 						</ul>
 					</li>
 
-					<li><a href="/about">about</a></li>
+					<li><a class="nav-link" href="/communities">communities</a></li>
+					<li><a class="nav-link" href="/about">about</a></li>
 				</ul>
 			</nav>
 		</div>
 
 		<div class="nav-end">
 			<div class="right-container">
-				<button class="btn btn-success">Signin</button>
+				<button class="btn btn-success"><a class="nav-link" href="/login">Sign in</a></button>
 			</div>
 			<button id="hamburger" aria-label="hamburger" aria-haspopup="true" aria-expanded="false">
 				<i class="bi bi-list" aria-hidden="true" />
@@ -80,7 +81,7 @@
 		align-items: center;
 		justify-content: space-between;
 		column-gap: 2rem;
-		height: 70px;
+		height: 80px;
 		padding: 1.2rem 3rem;
 	}
 

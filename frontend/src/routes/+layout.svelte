@@ -18,6 +18,6 @@
 
 	.slot {
 		min-height: 75vh;
-		margin-top: 70px;
+		margin-top: 80px;
 	}
 </style>
