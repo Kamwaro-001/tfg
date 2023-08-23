@@ -4,7 +4,7 @@
 
 <div class="login text-center">
 	<main class="form-signin w-100 m-auto">
-		<form>
+		<form method="POST">
 			<img class="mb-4" src="/images/bw_logo.svg" alt="" width="72" height="57" />
 			<h1 class="h3 mb-3 fw-normal">Please login</h1>
 
@@ -35,7 +35,7 @@
 
 			<div class="auth-extras">
 				<p class="mt-3 mb-3 text-muted">
-					<a href="#">Forgot password?</a><br />
+					Trouble logging in? <a href="#">Reset password</a><br />
 					Don't have an account? <a href="/signup">Create account here</a>
 				</p>
 			</div>
@@ -73,6 +73,7 @@
 
 	.form-signin .btn {
 		border-radius: 5px;
+		font-size: large;
 	}
 
 	.form-signin .form-floating:focus-within {
@@ -93,6 +94,7 @@
 
 	.form-signin .auth-extras {
 		text-align: left;
+    font-size: smaller;
 	}
 
 	.auth-extras a {

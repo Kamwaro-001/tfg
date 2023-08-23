@@ -10,5 +10,5 @@ router.register("notifications", NotificationViewset, basename="notifications")
 router.register("feedback", FeedbackViewset, basename="feedback")
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("api/", include(router.urls)),
 ]

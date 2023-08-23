@@ -1,10 +1,16 @@
 <script>
 	let message = '';
+	let password = '';
+	let re_password = '';
+
+	const confirm = (/** @type {string} */ password, /** @type {string} */ re_password) => {
+		return password !== re_password
+	};
 </script>
 
 <div class="signup text-center">
 	<main class="form-signin w-100 m-auto">
-		<form>
+		<form method="POST">
 			<img class="mb-4" src="/images/bw_logo.svg" alt="" width="72" height="57" />
 			<h1 class="h3 mb-3 fw-normal">Create an account</h1>
 
@@ -32,11 +38,12 @@
 			</div>
 			<div class="form-floating">
 				<input
-					name="password1"
+					name="password"
 					type="password"
 					class="form-control form-pw1"
 					id="floatingPassword"
 					placeholder="Password"
+					bind:value={password}
 					required
 				/>
 				<label for="floatingPassword">Password</label>
@@ -44,17 +51,26 @@
 
 			<div class="form-floating">
 				<input
-					name="password2"
+					name="re_password"
 					type="password"
 					class="form-control form-pw2"
 					id="floatingPassword"
-					placeholder="Password"
+					placeholder="Re-enter password"
+					bind:value={re_password}
 					required
 				/>
 				<label for="floatingPassword">Re-enter password</label>
 			</div>
 
-			<button class="w-100 btn btn-lg btn-success" type="submit">Sign up</button>
+			{#if re_password !== '' && password !== re_password}
+				<div class="confirm">
+					<p class="text-danger">passwords must match!</p>
+				</div>
+			{/if}
+
+			<button class="w-100 btn btn-lg btn-success" type="submit" disabled={confirm(password, re_password)}
+				>Sign up</button
+			>
 
 			<div class="auth-extras">
 				<p class="mt-3 mb-3 text-muted">
@@ -95,9 +111,10 @@
 	.form-signin label {
 		color: #5d5d5d;
 	}
-  
-  .form-signin .btn {
+
+	.form-signin .btn {
 		border-radius: 5px;
+		font-size: large;
 	}
 
 	.form-signin .form-username {
@@ -123,6 +140,7 @@
 
 	.form-signin .auth-extras {
 		text-align: left;
+		font-size: smaller;
 	}
 
 	.auth-extras a {

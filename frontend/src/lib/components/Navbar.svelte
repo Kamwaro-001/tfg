@@ -39,7 +39,10 @@
 
 		<div class="nav-end">
 			<div class="right-container">
-				<button class="btn btn-success"><a class="nav-link" href="/login">Sign in</a></button>
+				<a class="nav-link text-success login-link" href="/login">Login</a>
+				<button class="btn btn-success"
+					><a class="nav-link" href="/signup">Create an account</a></button
+				>
 			</div>
 			<button id="hamburger" aria-label="hamburger" aria-haspopup="true" aria-expanded="false">
 				<i class="bi bi-list" aria-hidden="true" />
@@ -72,8 +75,12 @@
 		background-color: #308148;
 		color: white;
 		text-align: center;
-		padding: 0.6rem 1.4rem;
+		padding: 0.6rem 0.8rem;
 		border-style: none;
+	}
+
+	.btn:hover {
+		background-color: #389a56;
 	}
 
 	#nav-menu .container {
@@ -125,6 +132,10 @@
 		display: flex;
 		align-items: center;
 		column-gap: 1rem;
+	}
+
+	.right-container .login-link {
+		font-weight: bold;
 	}
 
 	#hamburger {
