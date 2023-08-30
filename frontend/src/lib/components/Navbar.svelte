@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<header id="nav-menu" class="fixed-top bg-light" aria-label="navigation bar">
+<header id="nav-menu" class="fixed-top bg-light bg-opacity-75" aria-label="navigation bar">
 	<div class="container">
 		<div class="nav-start">
 			<a class="logo" href="/">
@@ -31,7 +31,24 @@
 						</ul>
 					</li>
 
-					<li><a class="nav-link" href="/communities">communities</a></li>
+					<li class="dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							href="/communities"
+							role="button"
+							id="dropdownMenuLink"
+							data-bs-toggle="dropdown"
+							aria-expanded="false"
+						>
+							communities
+						</a>
+
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="/communities">explore</a></li>
+							<li><a class="dropdown-item" href="/communities/create">create</a></li>
+						</ul>
+					</li>
+
 					<li><a class="nav-link" href="/about">about</a></li>
 				</ul>
 			</nav>
@@ -68,19 +85,21 @@
 
 	.menu a:hover {
 		text-decoration: underline;
+		color: #72c387;
 	}
 
 	.btn {
 		display: block;
-		background-color: #308148;
-		color: white;
+		background-color: #83d299;
+		color: black;
 		text-align: center;
 		padding: 0.6rem 0.8rem;
 		border-style: none;
+		font-weight: 600;
 	}
 
 	.btn:hover {
-		background-color: #389a56;
+		background-color: rgb(147, 217, 167);
 	}
 
 	#nav-menu .container {
@@ -118,6 +137,17 @@
 		padding: 0.3rem;
 		min-width: 60px;
 		margin: 0 0.6rem;
+	}
+
+	.menu-bar .dropdown-item {
+		background-color: white;
+		font-size: 1rem;
+		font-weight: 500;
+		letter-spacing: -0.6px;
+	}
+
+	.menu-bar .dropdown-menu {
+		border: none;
 	}
 
 	.nav-start,
