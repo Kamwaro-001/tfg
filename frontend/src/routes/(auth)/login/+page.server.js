@@ -1,5 +1,5 @@
 import { dev } from '$app/environment';
-import { login } from '$lib/server/auth';
+import { login } from '$lib/features/user/auth';
 import { redirect } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
@@ -19,6 +19,7 @@ export const actions = {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'strict',
+			// TODO: set secure to true when using HTTPS
 			secure: !dev,
 			maxAge: 60 * 60 * 24 * 7 // one week
 		});

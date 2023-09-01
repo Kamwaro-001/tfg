@@ -1,4 +1,4 @@
-import { signup } from '$lib/server/auth';
+import { signup } from '$lib/features/user/auth';
 import { redirect } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */

@@ -2,6 +2,14 @@ import axios from 'axios';
 
 export const header = 'http://127.0.0.1:8000';
 
+export const set_auth_header = (/** @type {string} */ token) => {
+	if (typeof token !== 'undefined' && token) {
+		axios.defaults.headers.common['Authorization'] = 'Token ' + token;
+	} else {
+		delete axios.defaults.headers.common['Authorization'];
+	}
+}
+
 export const login = async (/** @type {{ email: any; password: any; }} */ formdata) => {
 	const { email, password } = formdata;
 	const response = await axios.post(`${header + '/api/accounts/jwt/create/'}`, { email, password });

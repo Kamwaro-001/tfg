@@ -1,4 +1,21 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
+
+	/**
+	 * @type {any}
+	 */
+	export let user;
+	$: check = user.logged_in;
+
+	const dispatch = createEventDispatcher();
+
+	const handleLogout = () => {
+		user = {
+			logged_in: false,
+			token: '',
+		};
+		dispatch('logout', { logout: true });
+	};
 </script>
 
 <header id="nav-menu" class="fixed-top bg-light bg-opacity-75" aria-label="navigation bar">
@@ -55,12 +72,20 @@
 		</div>
 
 		<div class="nav-end">
-			<div class="right-container">
-				<a class="nav-link text-success login-link" href="/login">Login</a>
-				<button class="btn btn-success"
-					><a class="nav-link" href="/signup">Create an account</a></button
-				>
-			</div>
+			{#if check}
+				<div class="right-container">
+					<a class="nav-link text-success login-link" href="/profile">Profile</a>
+					<button class="btn btn-success" on:click={handleLogout}> Sign out </button>
+				</div>
+			{:else}
+				<div class="right-container">
+					<a class="nav-link text-success login-link" href="/login">Login</a>
+					<button class="btn btn-success">
+						<a class="nav-link" href="/signup">Create an account</a>
+					</button>
+				</div>
+			{/if}
+
 			<button id="hamburger" aria-label="hamburger" aria-haspopup="true" aria-expanded="false">
 				<i class="bi bi-list" aria-hidden="true" />
 			</button>

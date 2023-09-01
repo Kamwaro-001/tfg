@@ -1,4 +1,4 @@
-import { getCommunities } from '$lib/server/communities';
+import { getCommunities } from '$lib/features/communities';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
