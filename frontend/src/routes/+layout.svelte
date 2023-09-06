@@ -5,16 +5,16 @@
 	export let data;
 
 		/**
-	 * @param {{ detail: { signout: any; }; }} event
+	 * @param {{ detail: { logout: any; }; }} event
 	 */
-	 async function handleLogout(event) {
-		const status = event.detail.signout;
-		await goto(`/?signout=${status}`);
-	}
+	const handleLogout = (event) => {
+		const status = event.detail.logout;
+		goto(`/?logout=${status}`);
+	};
 </script>
 
 <div class="app">
-	<Navbar user={data.user} on:logout{handleLogout} />
+	<Navbar user={data.user} on:logout={handleLogout} />
 	<div class="slot">
 		<slot />
 	</div>

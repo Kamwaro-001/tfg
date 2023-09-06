@@ -12,7 +12,7 @@
 	const handleLogout = () => {
 		user = {
 			logged_in: false,
-			token: '',
+			token: null,
 		};
 		dispatch('logout', { logout: true });
 	};
@@ -28,7 +28,8 @@
 		<div class="nav-mid m-auto">
 			<nav class="menu">
 				<ul class="menu-bar">
-					<li><a href="/">Home</a></li>
+					<li><a class="nav-link" href="/">Home</a></li>
+					<li><a class="nav-link" href="/dashboard">Dashboard</a></li>
 
 					<li class="dropdown">
 						<a
