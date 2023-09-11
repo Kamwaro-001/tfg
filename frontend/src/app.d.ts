@@ -8,6 +8,15 @@ declare global {
 				logged_in: boolean;
 				token: string;
 			}
+			profile: {
+				username: any;
+				email: any;
+				first_name: any;
+				last_name: any;
+				phone_number: any;
+				town: any;
+				county: any;
+			}
 		}
 		// interface PageData {}
 		// interface Platform {}
