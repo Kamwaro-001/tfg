@@ -13,7 +13,7 @@ export const handle = async ({ event, resolve }) => {
 	}
 
 	if (!isEmpty(event.cookies.get('session_id'))) {
-		axios.defaults.headers.common['Authorization'] = `JWT ${event.cookies.get('session_id')}`;
+		// axios.defaults.headers.common['Authorization'] = `JWT ${event.cookies.get('session_id')}`;
 		event.locals.user = {
 			logged_in: true,
 			token: event.cookies.get('session_id')

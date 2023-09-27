@@ -13,17 +13,13 @@ export const getProfile = async () => {
 	}
 };
 
-export const editProfile = async (/** @type {any} */ formdata) => {
+export const editProfile = async (/** @type {object} */ form_data) => {
 	try {
-		return (
-			await axios.post(`${header + '/api/accounts/users/me/'}`, {
-				formdata
-			}),
-			{
-				message: 'success'
-			}
-		);
-	} catch (/** @type {any} */ error) {
+		await axios.patch('/api/accounts/users/me/', form_data)
+		return {
+			message: 'success'
+		}
+	} catch (/** @type {object} */ error) {
 		return {
 			message: error.message
 		};
