@@ -9,21 +9,26 @@ export async function load() {
 /** @type {import('./$types').Actions} */
 export const actions = {
 	default: async ({ request }) => {
-		const data = await request.formData();
-        const email = data.get('email')
-        const username = data.get('username')
-        const password = data.get('password')
-        const re_password = data.get('re_password')
-        const first_name = ""
-        const last_name = ""
-        const phone_number = ""
-        const county = ""
-        const town = ""
+    /** @type {FormData} */
+		const form = await request.formData();
 
-		const msg = await signup({ username, first_name, last_name, phone_number, town, county, email, password, re_password });
-        
+		/** @type {object} */
+		const data = {
+			email: form.get('email'),
+			username: form.get('username'),
+			password: form.get('password'),
+			re_password: form.get('re_password'),
+			first_name: '',
+			last_name: '',
+			phone_number: '',
+			county: '',
+			town: ''
+		};
+
+		const msg = await signup(data);
+
 		// TODO cover user activation
-		if (msg.message == 'success') {
+		if (msg.message === 'success') {
 			throw redirect(303, '/login');
 		}
 	}

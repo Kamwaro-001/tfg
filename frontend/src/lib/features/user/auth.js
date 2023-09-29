@@ -8,7 +8,7 @@ export const set_auth_header = (/** @type {string} */ token) => {
 	} else {
 		delete axios.defaults.headers.common['Authorization'];
 	}
-}
+};
 
 export const login = async (/** @type {object} */ form_data) => {
 	/** @type {AxiosResponse<any>} */
@@ -16,30 +16,16 @@ export const login = async (/** @type {object} */ form_data) => {
 	return response.data;
 };
 
-export const signup = async (/** @type {any} */ formdata) => {
+export const signup = async (/** @type {any} */ form_data) => {
 	try {
-		const { username, first_name, last_name, phone_number, town, county, email, password, re_password } = formdata;
-		return (
-			await axios.post(`${header + '/api/accounts/users/'}`, {
-				username,
-				first_name,
-				last_name,
-				phone_number,
-				town,
-				county,
-				email,
-				password,
-				re_password
-			}),
-			{
-				message: 'success'
-			}
-		);
+		await axios.post('/api/accounts/users/', form_data);
+
+		return {
+			message: 'success'
+		};
 	} catch (/** @type {any} */ error) {
 		return {
 			message: error.message
 		};
 	}
 };
-
-
