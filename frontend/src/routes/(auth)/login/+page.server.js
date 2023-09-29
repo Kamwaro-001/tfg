@@ -5,12 +5,18 @@ import { redirect } from '@sveltejs/kit';
 /** @type {import('./$types').Actions} */
 export const actions = {
 	default: async ({ request, cookies }) => {
-		const data = await request.formData();
-		const email = data.get('email');
-		const password = data.get('password');
-		const token = await login({ email, password });
+		const user = await request.formData();
 
-		cookies.set('session_id', JSON.stringify(token['access']), {
+		/** @type {object} */
+		const data = {
+			email: user.get('email'),
+			password: user.get('password')
+		};
+
+		/** @type {string | any} */
+		const token = await login(data);
+
+		cookies.set('session_id', token['access'], {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'strict',

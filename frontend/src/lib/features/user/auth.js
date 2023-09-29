@@ -10,9 +10,9 @@ export const set_auth_header = (/** @type {string} */ token) => {
 	}
 }
 
-export const login = async (/** @type {{ email: any; password: any; }} */ formdata) => {
-	const { email, password } = formdata;
-	const response = await axios.post(`${header + '/api/accounts/jwt/create/'}`, { email, password });
+export const login = async (/** @type {object} */ form_data) => {
+	/** @type {AxiosResponse<any>} */
+	const response = await axios.post('/api/accounts/jwt/create/', form_data);
 	return response.data;
 };
 

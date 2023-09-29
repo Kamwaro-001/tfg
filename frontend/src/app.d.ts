@@ -9,13 +9,13 @@ declare global {
 				token: string;
 			}
 			profile: {
-				username: any;
-				email: any;
-				first_name: any;
-				last_name: any;
+				username: string;
+				email: string;
+				first_name: string;
+				last_name: string;
 				phone_number: any;
-				town: any;
-				county: any;
+				town: string;
+				county: string;
 			}
 		}
 		// interface PageData {}
