@@ -5,17 +5,16 @@ export const getCommunities = async () => {
 	return response.data;
 };
 
-export const addCommunity = async (/** @type {any} */ community) => {
+export const add_community = async (/** @type {any} */ community) => {
 	try {
-		return (
-			await axios.post('/api/communities', { community }),
-			{
-				message: 'success'
-			}
-		);
-	} catch (error) {
+		await axios.post('/api/communities/', community);
+
 		return {
-			message: error
+			message: 'success'
+		};
+	} catch (/** @type {any} */ error) {
+		return {
+			message: error.message
 		};
 	}
 };

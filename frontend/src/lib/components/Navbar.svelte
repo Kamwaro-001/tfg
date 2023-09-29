@@ -110,7 +110,6 @@
 	}
 
 	.menu a:hover {
-		text-decoration: underline;
 		color: #72c387;
 	}
 

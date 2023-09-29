@@ -31,18 +31,18 @@
 			<div id="description-help" class="form-text">
 				Describe what the community will be mainly doing.
 			</div>
-			<textarea class="form-control" name="decription" id="description" cols="30" rows="4" />
+			<textarea class="form-control" name="description" id="description" cols="30" rows="4" />
 		</div>
 
 		<label for="">Community visibility</label>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="visibility" id="private" />
+			<input class="form-check-input" type="radio" name="visibility" id="private" value="private" />
 			<label class="form-check-label" for="private">
 				Private <span class="form-text"> - only people with invitation code can join </span>
 			</label>
 		</div>
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="visibility" id="public" />
+			<input class="form-check-input" type="radio" name="visibility" id="public" value="public" />
 			<label class="form-check-label" for="public"
 				>Public <span class="form-text"> - anyone can join </span></label
 			>
