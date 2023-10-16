@@ -9,6 +9,7 @@ declare global {
 				token: string;
 			}
 			profile: {
+				id: number;
 				username: string;
 				email: string;
 				first_name: string;

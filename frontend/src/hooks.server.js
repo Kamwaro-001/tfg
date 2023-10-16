@@ -23,6 +23,7 @@ export const handle = async ({ event, resolve }) => {
 		};
 		const user_profile = await getProfile();
 		event.locals.profile = {
+			id: user_profile.id,
 			username: user_profile.username,
 			first_name: user_profile.first_name,
 			last_name: user_profile.last_name,

@@ -18,3 +18,17 @@ export const add_community = async (/** @type {any} */ community) => {
 		};
 	}
 };
+
+export const delete_community = async (/** @type {any} */ community_id) => {
+	try {
+		await axios.delete('/api/communities/', community_id);
+
+		return {
+			message: 'community deleted'
+		};
+	} catch (/** @type {any} */ error) {
+		return {
+			message: error.message
+		};
+	}
+}

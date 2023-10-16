@@ -19,3 +19,17 @@ export const add_tree = async (/** @type {any} */ tree) => {
 		};
 	}
 };
+
+export const delete_tree = async (/** @type {any} */ tree_id) => {
+	try {
+		await axios.delete('/api/plant/', tree_id);
+
+		return {
+			message: 'tree deleted'
+		};
+	} catch (/** @type {any} */ error) {
+		return {
+			message: error.message
+		};
+	}
+}
