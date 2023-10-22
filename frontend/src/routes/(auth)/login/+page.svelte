@@ -1,5 +1,9 @@
+<script>
+  import Login from "$lib/components/Login.svelte";
+</script>
+
 <svelte:head>
- <title>Login page</title>
+ <title>Login</title>
 </svelte:head>
 
-<h1>login</h1>
+<Login />

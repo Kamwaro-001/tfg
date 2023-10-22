@@ -6,7 +6,7 @@ from .models import *
 class TreeInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = TreeInfo
-        read_only_fields = ("username",)
+        # read_only_fields = ("username",)
         fields = "__all__"
 
 

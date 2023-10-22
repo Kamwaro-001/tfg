@@ -1,5 +1,10 @@
+<script>
+	import Signup from '$lib/components/Signup.svelte';
+	export let message;
+</script>
+
 <svelte:head>
- <title>signup page</title>
+	<title>Sign up</title>
 </svelte:head>
 
-<h1>signup</h1>
+<Signup />

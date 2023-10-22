@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.utils.timesince import timesince
 from django.utils.timezone import now
@@ -7,7 +8,7 @@ Person = get_user_model()
 
 
 class TreeInfo(models.Model):
-    username = models.ForeignKey(Person, on_delete=models.CASCADE)
+    username = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     genus = models.CharField("Tree genus", max_length=255)
     more_info = models.TextField(
         "Additional information",
@@ -15,7 +16,7 @@ class TreeInfo(models.Model):
         max_length=255,
         blank=True,
     )
-    files = models.FileField("Evidence", blank=True)
+    files = models.FileField("Evidence", blank=True, null=True)
 
 
 class Classification(models.Model):
@@ -25,7 +26,7 @@ class Classification(models.Model):
 
 
 class Notifications(models.Model):
-    username = models.ForeignKey(Person, on_delete=models.CASCADE)
+    username = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField("Notification title", max_length=255)
 
     status_choices = (("unread", "unread"), ("read", "read"))
